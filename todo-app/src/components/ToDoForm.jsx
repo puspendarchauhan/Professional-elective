@@ -5,22 +5,19 @@ export default function TodoForm({ onAdd }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!text.trim()) return;
     onAdd(text);
     setText("");
   };
 
   return (
-    <form className="todo-form" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ display: "flex", gap: 10 }}>
       <input
-        className="input"
-        placeholder="Write a todo..."
         value={text}
         onChange={(e) => setText(e.target.value)}
+        placeholder="Write a todo..."
+        style={{ flex: 1, padding: 10 }}
       />
-      <button className="btn" type="submit">
-        Add
-      </button>
+      <button type="submit">Add</button>
     </form>
   );
 }

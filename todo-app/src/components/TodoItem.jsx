@@ -1,18 +1,28 @@
 export default function TodoItem({ todo, onDelete, onToggle }) {
   return (
-    <li className="item">
-      <label className="item-left">
+    <li
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: 10,
+        border: "1px solid #ccc",
+        borderRadius: 10,
+        marginTop: 10,
+      }}
+    >
+      <label style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <input
           type="checkbox"
           checked={todo.done}
           onChange={() => onToggle(todo.id)}
         />
-        <span className={todo.done ? "done" : ""}>{todo.text}</span>
+        <span style={{ textDecoration: todo.done ? "line-through" : "none" }}>
+          {todo.text}
+        </span>
       </label>
 
-      <button className="btn danger" onClick={() => onDelete(todo.id)}>
-        Delete
-      </button>
+      <button onClick={() => onDelete(todo.id)}>Delete</button>
     </li>
   );
 }
