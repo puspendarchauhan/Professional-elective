@@ -1,20 +1,18 @@
 import TodoItem from "./TodoItem";
 
-export default function TodoList({ todos, onDelete, onToggle }) {
-  if (todos.length === 0) {
-    return <p style={{ textAlign: "center", marginTop: 20 }}>No todos yet.</p>;
-  }
-
+export default function TodoList({ todos, onToggle, onDelete, onEdit, onPriority }) {
   return (
-    <ul style={{ listStyle: "none", padding: 0, marginTop: 15 }}>
-      {todos.map((todo) => (
+    <div className="list">
+      {todos.map((t) => (
         <TodoItem
-          key={todo.id}
-          todo={todo}
-          onDelete={onDelete}
+          key={t.id}
+          todo={t}
           onToggle={onToggle}
+          onDelete={onDelete}
+          onEdit={onEdit}
+          onPriority={onPriority}
         />
       ))}
-    </ul>
+    </div>
   );
 }

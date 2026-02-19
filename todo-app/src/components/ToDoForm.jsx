@@ -2,22 +2,37 @@ import { useState } from "react";
 
 export default function TodoForm({ onAdd }) {
   const [text, setText] = useState("");
+  const [priority, setPriority] = useState("low");
 
-  const handleSubmit = (e) => {
+  const submit = (e) => {
     e.preventDefault();
-    onAdd(text);
+    onAdd(text, priority);
     setText("");
+    setPriority("low");
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", gap: 10 }}>
+    <form className="form" onSubmit={submit}>
       <input
+        className="input"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Write a todo..."
-        style={{ flex: 1, padding: 10 }}
+        placeholder="Write a new task..."
       />
-      <button type="submit">Add</button>
+
+      <select
+        className="select"
+        value={priority}
+        onChange={(e) => setPriority(e.target.value)}
+      >
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+
+      <button className="primary" type="submit">
+        Add
+      </button>
     </form>
   );
 }

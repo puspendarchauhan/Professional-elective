@@ -1,9 +1,11 @@
-import TodoApp from "./components/TodoApp";
+import Search from "./search";
 
-export default function App() {
+function App() {
   return (
     <>
-      <TodoApp />
+      <Search />
     </>
   );
 }
+
+export default App;
