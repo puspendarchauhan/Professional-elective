@@ -57,7 +57,7 @@ export default function TodoApp() {
       id: crypto?.randomUUID ? crypto.randomUUID() : String(Date.now()),
       text: value,
       done: false,
-      priority, // low | medium | high
+      priority, 
       createdAt: Date.now(),
     };
 
